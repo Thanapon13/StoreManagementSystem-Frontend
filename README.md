@@ -48,38 +48,35 @@ All API calls go through `src/apis/` — no `fetch`/`axios` calls are scattered 
 
 ## Environment Variables
 
-Create a `.env.local` file in the project root:
+Create a `.env` file in the project root and set `VITE_API_LOCAL` to the base URL of the backend API:
 
 ```
-VITE_API_LOCAL=http://localhost:3000
+VITE_API_LOCAL=https://web-production-7a23a.up.railway.app
 ```
-
-This should point to the base URL of the [backend API](../StoreManagementSystem-Backend).
 
 ## Setup & Running
 
 ### Prerequisites
 - Node.js 18+
-- pnpm
-- The [backend](../StoreManagementSystem-Backend) running and reachable at `VITE_API_LOCAL`
+- npm
+- The backend running and reachable at `VITE_API_LOCAL`
 
 ### Steps
 
 ```bash
-# 1. Install dependencies
-pnpm install
+# 1. Create .env and set VITE_API_LOCAL=https://web-production-7a23a.up.railway.app
 
-# 2. Configure environment
-cp .env.local.example .env.local   # then set VITE_API_LOCAL
+# 2. Install dependencies
+npm i
 
 # 3. Run the dev server
-pnpm dev
+npm run dev
 
 # Build for production
-pnpm build
+npm run build
 
 # Preview a production build
-pnpm preview
+npm run preview
 ```
 
 By default the app runs at `http://localhost:5173`.

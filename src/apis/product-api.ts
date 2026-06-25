@@ -20,6 +20,7 @@ export type ApiProduct = {
 
 export type ProductAllResponse = {
   data: ApiProduct[];
+  total: number;
 };
 
 export type ProductOneResponse = {
@@ -30,6 +31,8 @@ export type ProductFilters = {
   search?: string;
   minPrice?: number;
   maxPrice?: number;
+  page?: number;
+  limit?: number;
 };
 
 export const createProduct = (input: FormData) =>
