@@ -42,7 +42,7 @@ export const myProducts = () =>
   axios.get<ProductAllResponse>("/product/seller/my");
 
 export const productAll = (params?: ProductFilters) =>
-  axios.get<ProductAllResponse>("/product", { params });
+  axios.get<ProductAllResponse>("/product/", { params });
 
 export const getProduct = (id: number | string) =>
   axios.get<ProductOneResponse>(`/product/${id}`);
