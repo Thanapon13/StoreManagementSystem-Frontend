@@ -3,7 +3,14 @@ type ProductStockStatusProps = {
 };
 
 const ProductStockStatus = ({ outOfStock }: ProductStockStatusProps) => {
-  if (outOfStock) return null;
+  if (outOfStock) {
+    return (
+      <span className="flex shrink-0 items-center gap-1.5 text-xs font-medium text-muted-foreground">
+        <span className="size-1.5 rounded-full bg-destructive" />
+        Sold out
+      </span>
+    );
+  }
 
   return (
     <span className="flex shrink-0 items-center gap-1.5 text-xs font-medium text-muted-foreground">

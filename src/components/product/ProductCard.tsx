@@ -19,7 +19,8 @@ interface ProductCardProps {
 export default function ProductCard({ product }: ProductCardProps) {
   const outOfStock = product.quantity <= 0;
   const lowStock = !outOfStock && product.quantity <= 5;
-  const images = product.images.length > 0 ? product.images : ["/placeholder.svg"];
+  const images =
+    product.images.length > 0 ? product.images : ["/placeholder.svg"];
 
   return (
     <Link
@@ -37,7 +38,11 @@ export default function ProductCard({ product }: ProductCardProps) {
           onClick={e => {
             // Let image taps navigate as usual, but keep nav-arrow/dot taps inside the card.
             const target = e.target as HTMLElement;
-            if (target.closest(".swiper-button-next, .swiper-button-prev, .swiper-pagination-bullet")) {
+            if (
+              target.closest(
+                ".swiper-button-next, .swiper-button-prev, .swiper-pagination-bullet",
+              )
+            ) {
               e.preventDefault();
             }
           }}
