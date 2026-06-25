@@ -1,0 +1,136 @@
+import type { Product, CartItemWithProduct, OrderWithItems } from "@/types";
+
+export const sampleProducts: Product[] = [
+  {
+    id: "prod_1",
+    seller_id: "user_1",
+    title: "Wireless Mechanical Keyboard",
+    description: "Compact 75% layout mechanical keyboard with hot-swappable switches.",
+    unit_price: 2590,
+    quantity: 15,
+    image: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600",
+    created_at: "2026-01-11T10:00:00.000Z",
+  },
+  {
+    id: "prod_2",
+    seller_id: "user_1",
+    title: "Ergonomic Wireless Mouse",
+    description: "Vertical grip mouse designed to reduce wrist strain.",
+    unit_price: 990,
+    quantity: 30,
+    image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=600",
+    created_at: "2026-01-11T10:05:00.000Z",
+  },
+  {
+    id: "prod_3",
+    seller_id: "user_1",
+    title: "4K USB-C Webcam",
+    description: "Autofocus webcam with built-in noise-cancelling mic.",
+    unit_price: 1790,
+    quantity: 0,
+    image: "https://images.unsplash.com/photo-1587826080692-f439cd0b70da?w=600",
+    created_at: "2026-01-12T08:00:00.000Z",
+  },
+  {
+    id: "prod_4",
+    seller_id: "user_1",
+    title: "Laptop Stand (Aluminum)",
+    description: "Adjustable height aluminum stand, foldable for travel.",
+    unit_price: 690,
+    quantity: 50,
+    image: "https://images.unsplash.com/photo-1611078489935-0cb964de46d6?w=600",
+    created_at: "2026-01-13T08:00:00.000Z",
+  },
+  {
+    id: "prod_5",
+    seller_id: "user_2",
+    title: "Noise Cancelling Headphones",
+    description: "Over-ear headphones with 30-hour battery life.",
+    unit_price: 3490,
+    quantity: 20,
+    image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600",
+    created_at: "2026-01-14T09:00:00.000Z",
+  },
+  {
+    id: "prod_6",
+    seller_id: "user_2",
+    title: "Portable SSD 1TB",
+    description: "USB-C portable SSD with read speeds up to 1050MB/s.",
+    unit_price: 2190,
+    quantity: 25,
+    image: "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=600",
+    created_at: "2026-01-14T09:10:00.000Z",
+  },
+  {
+    id: "prod_7",
+    seller_id: "user_2",
+    title: "Smart Desk Lamp",
+    description: "LED desk lamp with adjustable color temperature and app control.",
+    unit_price: 1290,
+    quantity: 18,
+    image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=600",
+    created_at: "2026-01-15T09:00:00.000Z",
+  },
+  {
+    id: "prod_8",
+    seller_id: "user_2",
+    title: "Standing Desk Converter",
+    description: "Sit-stand desk converter with dual monitor support.",
+    unit_price: 4990,
+    quantity: 8,
+    image: "https://images.unsplash.com/photo-1593062096033-9a26b09da705?w=600",
+    created_at: "2026-01-16T09:00:00.000Z",
+  },
+];
+
+export const sampleCartItems: CartItemWithProduct[] = [
+  { id: "ci_1", cart_id: "cart_1", product_id: "prod_2", quantity: 1, product: sampleProducts[1] },
+  { id: "ci_2", cart_id: "cart_1", product_id: "prod_6", quantity: 2, product: sampleProducts[5] },
+];
+
+export const sampleOrders: OrderWithItems[] = [
+  {
+    id: "order_1",
+    buyer_id: "user_3",
+    total_price: 2590 + 1290,
+    status: "shipped",
+    created_at: "2026-02-01T12:00:00.000Z",
+    items: [
+      {
+        id: "oi_1",
+        order_id: "order_1",
+        product_id: "prod_1",
+        quantity: 1,
+        price_at_purchase: 2590,
+        product: sampleProducts[0],
+      },
+      {
+        id: "oi_2",
+        order_id: "order_1",
+        product_id: "prod_7",
+        quantity: 1,
+        price_at_purchase: 1290,
+        product: sampleProducts[6],
+      },
+    ],
+  },
+  {
+    id: "order_2",
+    buyer_id: "user_3",
+    total_price: 990,
+    status: "pending",
+    created_at: "2026-02-10T15:30:00.000Z",
+    items: [
+      {
+        id: "oi_3",
+        order_id: "order_2",
+        product_id: "prod_2",
+        quantity: 1,
+        price_at_purchase: 990,
+        product: sampleProducts[1],
+      },
+    ],
+  },
+];
+
+export const CURRENT_SELLER_ID = "user_1";
