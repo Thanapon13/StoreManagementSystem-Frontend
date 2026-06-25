@@ -9,6 +9,7 @@ export const sampleProducts: Product[] = [
     unit_price: 2590,
     quantity: 15,
     image: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600",
+    images: ["https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600"],
     created_at: "2026-01-11T10:00:00.000Z",
   },
   {
@@ -19,6 +20,7 @@ export const sampleProducts: Product[] = [
     unit_price: 990,
     quantity: 30,
     image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=600",
+    images: ["https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=600"],
     created_at: "2026-01-11T10:05:00.000Z",
   },
   {
@@ -29,6 +31,7 @@ export const sampleProducts: Product[] = [
     unit_price: 1790,
     quantity: 0,
     image: "https://images.unsplash.com/photo-1587826080692-f439cd0b70da?w=600",
+    images: ["https://images.unsplash.com/photo-1587826080692-f439cd0b70da?w=600"],
     created_at: "2026-01-12T08:00:00.000Z",
   },
   {
@@ -39,6 +42,7 @@ export const sampleProducts: Product[] = [
     unit_price: 690,
     quantity: 50,
     image: "https://images.unsplash.com/photo-1611078489935-0cb964de46d6?w=600",
+    images: ["https://images.unsplash.com/photo-1611078489935-0cb964de46d6?w=600"],
     created_at: "2026-01-13T08:00:00.000Z",
   },
   {
@@ -49,6 +53,7 @@ export const sampleProducts: Product[] = [
     unit_price: 3490,
     quantity: 20,
     image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600",
+    images: ["https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600"],
     created_at: "2026-01-14T09:00:00.000Z",
   },
   {
@@ -59,6 +64,7 @@ export const sampleProducts: Product[] = [
     unit_price: 2190,
     quantity: 25,
     image: "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=600",
+    images: ["https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=600"],
     created_at: "2026-01-14T09:10:00.000Z",
   },
   {
@@ -69,6 +75,7 @@ export const sampleProducts: Product[] = [
     unit_price: 1290,
     quantity: 18,
     image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=600",
+    images: ["https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=600"],
     created_at: "2026-01-15T09:00:00.000Z",
   },
   {
@@ -79,6 +86,7 @@ export const sampleProducts: Product[] = [
     unit_price: 4990,
     quantity: 8,
     image: "https://images.unsplash.com/photo-1593062096033-9a26b09da705?w=600",
+    images: ["https://images.unsplash.com/photo-1593062096033-9a26b09da705?w=600"],
     created_at: "2026-01-16T09:00:00.000Z",
   },
 ];

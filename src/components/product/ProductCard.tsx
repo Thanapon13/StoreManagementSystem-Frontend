@@ -1,10 +1,16 @@
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
 import ProductStatusBadge from "@/components/product/ProductStatusBadge";
 import ProductPriceTag from "@/components/product/ProductPriceTag";
 import ProductSellerInfo from "@/components/product/ProductSellerInfo";
 import ProductStockStatus from "@/components/product/ProductStockStatus";
 import type { Product } from "@/types/product";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 interface ProductCardProps {
   product: Product;
@@ -13,6 +19,7 @@ interface ProductCardProps {
 export default function ProductCard({ product }: ProductCardProps) {
   const outOfStock = product.quantity <= 0;
   const lowStock = !outOfStock && product.quantity <= 5;
+  const images = product.images.length > 0 ? product.images : ["/placeholder.svg"];
 
   return (
     <Link
@@ -25,16 +32,38 @@ export default function ProductCard({ product }: ProductCardProps) {
 
       <article className="relative flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-border/60 bg-card shadow-sm ring-1 ring-white/[0.04] transition-all duration-300 group-hover:-translate-y-1.5 group-hover:border-border group-hover:shadow-xl group-hover:shadow-primary/5 group-focus-visible:ring-2 group-focus-visible:ring-primary/40">
         {/* Media */}
-        <div className="relative aspect-square overflow-hidden">
-          <img
-            src={product.image || "/placeholder.svg"}
-            alt={product.title}
-            crossOrigin="anonymous"
-            className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.06]"
-          />
+        <div
+          className="product-card-swiper relative aspect-square overflow-hidden"
+          onClick={e => {
+            // Let image taps navigate as usual, but keep nav-arrow/dot taps inside the card.
+            const target = e.target as HTMLElement;
+            if (target.closest(".swiper-button-next, .swiper-button-prev, .swiper-pagination-bullet")) {
+              e.preventDefault();
+            }
+          }}
+        >
+          <Swiper
+            modules={[Navigation, Pagination]}
+            navigation={images.length > 1}
+            pagination={images.length > 1 ? { clickable: true } : false}
+            preventClicks={false}
+            preventClicksPropagation={false}
+            className="h-full w-full"
+          >
+            {images.map((url, index) => (
+              <SwiperSlide key={url + index}>
+                <img
+                  src={url}
+                  alt={`${product.title} — image ${index + 1}`}
+                  crossOrigin="anonymous"
+                  className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.06]"
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
 
           {/* Gradient veil for legibility of overlays */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-black/5" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-black/5" />
 
           {/* Shine sweep on hover */}
           <div className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full" />

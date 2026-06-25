@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
+import ProductGallery from "@/components/product/ProductGallery";
 import useAuth from "@/hooks/useAuth";
 import useCart from "@/hooks/useCart";
 import { getProduct } from "@/apis/product-api";
@@ -82,11 +83,7 @@ const ProductDetailPage = () => {
 
   return (
     <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
-      <img
-        src={product.image}
-        alt={product.title}
-        className="aspect-square w-full rounded-3xl object-cover shadow-sm ring-1 ring-foreground/5"
-      />
+      <ProductGallery images={product.images} alt={product.title} />
 
       <div className="flex flex-col gap-5">
         <div>

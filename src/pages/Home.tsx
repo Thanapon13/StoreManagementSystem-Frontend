@@ -9,14 +9,18 @@ import ProductList from "@/components/home/ProductList";
 
 const HomePage = () => {
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchFeaturedProducts = async () => {
       try {
         const { data } = await productAll();
+
         setFeaturedProducts(data.data.slice(0, 4).map(toProduct));
       } catch {
         setFeaturedProducts([]);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -56,7 +60,7 @@ const HomePage = () => {
           </Button>
         </div>
 
-        <ProductList products={featuredProducts} />
+        <ProductList products={featuredProducts} isLoading={isLoading} />
       </section>
     </div>
   );

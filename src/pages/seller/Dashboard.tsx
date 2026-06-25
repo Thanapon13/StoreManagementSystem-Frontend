@@ -17,6 +17,7 @@ import type { Product } from "@/types/product";
 
 const SellerDashboardPage = () => {
   const [products, setProducts] = useState<Product[]>([]);
+
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
 

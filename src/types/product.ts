@@ -6,6 +6,7 @@ export interface Product {
   unit_price: number;
   quantity: number;
   image: string;
+  images: string[];
   created_at: string;
   seller?: { id: number; email: string };
 }
