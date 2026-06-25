@@ -23,6 +23,9 @@ dependencies:
   clsx:
     specifier: ^2.1.1
     version: 2.1.1
+  dotenv:
+    specifier: ^17.4.2
+    version: 17.4.2
   lucide-react:
     specifier: ^1.21.0
     version: 1.21.0(react@19.2.7)
@@ -50,6 +53,12 @@ dependencies:
   sonner:
     specifier: ^2.0.7
     version: 2.0.7(react-dom@19.2.7)(react@19.2.7)
+  sweetalert2:
+    specifier: ^11.26.25
+    version: 11.26.25
+  swiper:
+    specifier: ^12.2.0
+    version: 12.2.0
   tailwind-merge:
     specifier: ^3.6.0
     version: 3.6.0
@@ -4973,6 +4982,15 @@ packages:
   /strip-final-newline@4.0.0:
     resolution: {integrity: sha512-aulFJcD6YK8V1G7iRB5tigAP4TsHBZZrOV8pjV++zdUwmeV8uzbY7yn6h9MswN62adStNZFuCIx4haBnRuMDaw==}
     engines: {node: '>=18'}
+    dev: false
+
+  /sweetalert2@11.26.25:
+    resolution: {integrity: sha512-+hunCOJdJ6FLj04T9YSLvvZXRjsvIkTeTKP2e4VF8CaBias961BTnWiSFAy7F/CM5eq3QK2Rraoc5Gzftslvkg==}
+    dev: false
+
+  /swiper@12.2.0:
+    resolution: {integrity: sha512-K8uXsBZU6ME97Ia3xbBge8IRCnR1lOmIILzvY/jGVic7dSTQ530s3uO8RvXbPUtkkXLWIwmZLRPbtDxRWVAFdg==}
+    engines: {node: '>= 4.7.0'}
     dev: false
 
   /systeminformation@5.31.9:
