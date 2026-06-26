@@ -11,29 +11,52 @@ import {
 } from "@/components/ui/dialog";
 import ProductForm from "@/components/dashboard/ProductForm";
 import ProductList from "@/components/dashboard/ProductList";
+import ProductsPagination from "@/components/dashboard/ProductsPagination";
 import { myProducts, deleteProduct } from "@/apis/product-api";
 import { toProduct } from "@/utils/map-product";
 import type { Product } from "@/types/product";
 
 const SellerDashboardPage = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
 
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
 
   const fetchProducts = async () => {
+    setLoading(true);
+
     try {
       const { data } = await myProducts();
 
       setProducts(data.data.map(toProduct));
     } catch {
       toast.error("Failed to load products.");
+    } finally {
+      setLoading(false);
     }
   };
 
   useEffect(() => {
     fetchProducts();
   }, []);
+
+  useEffect(() => {
+    const totalPages = Math.max(1, Math.ceil(products.length / pageSize));
+    if (page > totalPages) {
+      setPage(totalPages);
+    }
+  }, [products, pageSize, page]);
+
+  const handlePageSizeChange = (size: number) => {
+    setPageSize(size);
+    setPage(1);
+  };
+
+  const paginatedProducts = products.slice((page - 1) * pageSize, page * pageSize);
 
   const handleDelete = async (productId: string) => {
     try {
@@ -73,11 +96,23 @@ const SellerDashboardPage = () => {
       </div>
 
       <ProductList
-        products={products}
+        products={paginatedProducts}
+        loading={loading}
+        pageSize={pageSize}
         onAddProduct={openCreateDialog}
         onEdit={openEditDialog}
         onDelete={handleDelete}
       />
+
+      {!loading && products.length > 0 && (
+        <ProductsPagination
+          page={page}
+          pageSize={pageSize}
+          total={products.length}
+          onPageChange={setPage}
+          onPageSizeChange={handlePageSizeChange}
+        />
+      )}
 
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
         <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-lg">

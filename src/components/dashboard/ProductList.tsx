@@ -9,10 +9,13 @@ import {
 } from "@/components/ui/table";
 import EmptyState from "@/components/common/EmptyState";
 import ProductTableRow from "@/components/dashboard/ProductTableRow";
+import ProductTableSkeleton from "@/components/dashboard/ProductTableSkeleton";
 import type { Product } from "@/types/product";
 
 type ProductListProps = {
   products: Product[];
+  loading?: boolean;
+  pageSize?: number;
   onAddProduct: () => void;
   onEdit: (product: Product) => void;
   onDelete: (productId: string) => void;
@@ -20,11 +23,13 @@ type ProductListProps = {
 
 const ProductList = ({
   products,
+  loading = false,
+  pageSize = 10,
   onAddProduct,
   onEdit,
   onDelete,
 }: ProductListProps) => {
-  if (products.length === 0) {
+  if (!loading && products.length === 0) {
     return (
       <EmptyState
         icon={Store}
@@ -52,14 +57,18 @@ const ProductList = ({
         </TableHeader>
 
         <TableBody>
-          {products.map(product => (
-            <ProductTableRow
-              key={product.id}
-              product={product}
-              onEdit={onEdit}
-              onDelete={onDelete}
-            />
-          ))}
+          {loading ? (
+            <ProductTableSkeleton rows={pageSize} />
+          ) : (
+            products.map(product => (
+              <ProductTableRow
+                key={product.id}
+                product={product}
+                onEdit={onEdit}
+                onDelete={onDelete}
+              />
+            ))
+          )}
         </TableBody>
       </Table>
     </div>
